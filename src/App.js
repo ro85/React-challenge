@@ -1,5 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route 
+} from "react-router-dom";
 import './App.css';
+import DrinkList from './components/DrinkList';
+import Drink from './components/pages/Drink'
   
 
 const App = () => {
@@ -16,15 +23,16 @@ const App = () => {
   };
 
   useEffect(() =>{
-    fetchDrinks(url);
+    fetchDrinks(url);   
   }, [])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
-    </div>
+    <Router>
+      <Routes>        
+        <Route path="/" element={<DrinkList drinks={drinks}/>} />  
+        <Route path="/:idDrink" element={<Drink />} />        
+      </Routes>
+    </Router>
   );
 }
 
