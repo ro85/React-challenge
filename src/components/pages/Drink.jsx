@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import DrinkReceipt from '../DrinkReceipt';
+import DrinkRecipe from '../DrinkRecipe';
 
 
 const Drink = () => {
   const navigate = useNavigate();
   const { idDrink } = useParams();
-
      
-  return (
-       
+  return (       
     <div>
       <div>
         <button className='btn btn-primary' onClick={ () => {navigate("/")}}>volver</button>      
-      </div>
-      
-      <DrinkReceipt drinkId={idDrink} />      
-    </div>      
-
+      </div>      
+      <DrinkRecipe drinkId={idDrink} />      
+    </div> 
   )
 }
 

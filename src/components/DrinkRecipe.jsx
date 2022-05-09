@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const DrinkReceipt = ({ drinkId }) => {
+const DrinkRecipe = ({ drinkId }) => {
   const [drink, setDrink] = useState({});
   const [ingredients, setIngredients] = useState([]);
 
@@ -44,4 +44,4 @@ const DrinkReceipt = ({ drinkId }) => {
   ) 
 }
 
-export default DrinkReceipt
+export default DrinkRecipe

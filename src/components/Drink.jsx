@@ -34,10 +34,12 @@ const Drink = ({ drinkId }) => {
      <ul>
        <li>{ingredients[0]}</li>
        <li>{ingredients[1]}</li>
-     </ul>     
-      <p>y {ingredients.filter(Boolean).length - 2} ingredients mas</p>
+     </ul> 
+     {(ingredients.filter(Boolean).length - 2 >= 1) ? <p>y {ingredients.filter(Boolean).length - 2} ingredients mas</p> : null }    
+      
     </div>
   )
 }
 
 export default Drink
+
