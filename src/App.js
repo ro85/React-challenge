@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route 
+  Route, 
+  Navigate
 } from "react-router-dom";
 import './App.css';
 import DrinkList from './components/DrinkList';
@@ -30,7 +31,8 @@ const App = () => {
     <Router>
       <Routes>        
         <Route path="/" element={<DrinkList drinks={drinks}/>} />  
-        <Route path="/:idDrink" element={<DrinkPage />} />        
+        <Route path="/:idDrink" element={<DrinkPage />} /> 
+        <Route path="*" element={<Navigate to="/" />} />        
       </Routes>
     </Router>
   );
