@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import DrinkList from './components/DrinkList';
-import Drink from './components/pages/Drink'
+import DrinkPage from './pages/DrinkPage';
   
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
     <Router>
       <Routes>        
         <Route path="/" element={<DrinkList drinks={drinks}/>} />  
-        <Route path="/:idDrink" element={<Drink />} />        
+        <Route path="/:idDrink" element={<DrinkPage />} />        
       </Routes>
     </Router>
   );

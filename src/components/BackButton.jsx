@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
 const BackButton = () => {
   const navigate = useNavigate();
 
-  return (
-    <div>
-      <button className='btn btn-primary' onClick={() = > {
-        navigate("/");
-      }}></button>
-    </div>
+  return (       
+    <i className="fas fa-arrow-left flex-shrink-1" onClick={ () => {navigate("/")}}></i>    
   )
 }
 

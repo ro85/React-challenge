@@ -1,0 +1,42 @@
+.card-recipe{
+  max-width: 380px;
+  margin: 8px 0px;
+  padding: 12px 8px;
+  background-color: #6cbace;
+}
+
+.recipe-header{
+  background-color: #6cbace;
+  padding: 5px 4px;
+}
+
+.recipe-header h3, i{
+  color: white;
+}
+
+.recipe-header h3{
+  font-size: large;
+}
+
+.recipe-body{
+  background-color:white;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.card-recipe img{ 
+  margin: auto;
+}
+
+.recipe-info{
+  margin-left: 18px;
+  margin-top: 18px;
+}
+
+.recipe-info p, li{
+  font-size: 15px;
+  margin: 0;
+  line-height: 23px;
+  color:grey;
+}
+

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import '../App.css';
 
 const Drink = ({ drinkId }) => {
   const [drink, setDrink] = useState({});
@@ -26,20 +27,18 @@ const Drink = ({ drinkId }) => {
   useEffect(() =>{
     fetchDrink(urlDrink);    
   }, []) 
-
   
   return (
-    <div className='row'>
-     <p>{drink.name}</p>
-     <ul>
-       <li>{ingredients[0]}</li>
-       <li>{ingredients[1]}</li>
-     </ul> 
-     {(ingredients.filter(Boolean).length - 2 >= 1) ? <p>y {ingredients.filter(Boolean).length - 2} ingredients mas</p> : null }    
+    <div className='flex-grow-1 drink-info'>
+      <h2 className='text-left'>{drink.name}</h2>
+      <ul>
+        <li>{ingredients[0]}</li>
+        <li>{ingredients[1]}</li>
+      </ul> 
+      {(ingredients.filter(Boolean).length - 2 >= 1) ? <p>y {ingredients.filter(Boolean).length - 2} ingredients mas</p> : null }    
       
     </div>
   )
 }
 
 export default Drink
-
