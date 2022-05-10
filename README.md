@@ -17,12 +17,6 @@ $ git clone git@github.com:ro85/React-challenge.git
 $ cd React-challenge
 $ yarn install
 ```
-información adicional: para usar la aplicación en un entorno de desarollo, use ```rails s``` para comenzar.
-
-Para generar seeds de prueba
-```
-$ rails db:seed
-```
 
 ## Available Scripts
 
