@@ -11,9 +11,9 @@ const DrinkList = ({ drinks }) => {
       <div className='drinks-list'>
         { drinks.map( (item) => 
             <div key={item.idDrink} className="card-drinks" >
-              <div className='d-flex justify-content-between card-drink' onClick={ () => {navigate(`/${item.idDrink}`)}}>           
+              <div className='d-md-flex justify-content-between card-drink' onClick={ () => {navigate(`/${item.idDrink}`)}}>           
                 <Drink drinkId={item.idDrink}  />
-                <img src={item.strDrinkThumb} alt="" style={{width:"200px", height:"200px"}} />
+                <img src={item.strDrinkThumb} alt="" style={{width:"200px", height:"200px"}} className="img-drink-list" />
               </div>
             </div>
           )
