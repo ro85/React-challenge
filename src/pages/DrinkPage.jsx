@@ -7,12 +7,11 @@ import '../App.css';
 const DrinkPage = ({drinkId}) => {
   const navigate = useNavigate();
   const { idDrink } = useParams();
-
   const [drink, setDrink] = useState({});
   const [ingredients, setIngredients] = useState([]);
 
   const urlDrink = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`
-
+  
   const fetchDrink = (url) => {
     fetch(url)
       .then(response => response.json())    
@@ -37,8 +36,6 @@ const DrinkPage = ({drinkId}) => {
     fetchDrink(urlDrink);    
   }, []) 
 
-
-     
   return (       
     <div className='d-flex justify-content-center'>        
       <DrinkRecipe drinkId={idDrink} drink={drink} ingredients={ingredients} />      
