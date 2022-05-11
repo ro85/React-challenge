@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import DrinkRecipe from '../components/DrinkRecipe';
 import BackButton from '../components/BackButton';
+import useFetch from '../useFetch';
 import '../App.css';
 
 const DrinkPage = ({drinkId}) => {
@@ -10,30 +12,19 @@ const DrinkPage = ({drinkId}) => {
   const [drink, setDrink] = useState({});
   const [ingredientsAndMeasures, setIngredientsAndMeasures] = useState([]);
 
-  const urlDrink = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`
-  
-  const fetchDrink = (url) => {
-    fetch(url)
-    .then(response => response.json())    
-    .then((data) => {
-        
-      const drinkInfo  = {
-        name: data.drinks[0].strDrink,
-        image: data.drinks[0].strDrinkThumb,
-        instruction: data.drinks[0].strInstructions
-      };
+  const response  = useFetch(axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`));
 
-      const ingredientsAndMeasuresInfo = [`${data.drinks[0].strMeasure1} - ${data.drinks[0].strIngredient1}` , `${data.drinks[0].strMeasure2} - ${data.drinks[0].strIngredient2}`, `${data.drinks[0].strMeasure3} - ${data.drinks[0].strIngredient3}`, `${data.drinks[0].strMeasure4} - ${data.drinks[0].strIngredient4}`, `${data.drinks[0].strMeasure5} - ${data.drinks[0].strIngredient5}`, `${data.drinks[0].strMeasure6} - ${data.drinks[0].strIngredient6}`, `${data.drinks[0].strMeasure7} - ${data.drinks[0].strIngredient7}`, `${data.drinks[0].strMeasure8} - ${data.drinks[0].strIngredient8}`, `${data.drinks[0].strMeasure9} - ${data.drinks[0].strIngredient9}`, `${data.drinks[0].strMeasure10} - ${data.drinks[0].strIngredient10}`, `${data.drinks[0].strMeasure11} - ${data.drinks[0].strIngredient11}`, `${data.drinks[0].strMeasure12} - ${data.drinks[0].strIngredient12}`, `${data.drinks[0].strMeasure13} - ${data.drinks[0].strIngredient13}`, `${data.drinks[0].strMeasure14} - ${data.drinks[0].strIngredient14}`, `${data.drinks[0].strMeasure15} - ${data.drinks[0].strIngredient15 }` ]       
+  const drinkInfo  = {
+    name: response.response.strDrink,
+    image: response.response.strDrinkThumb,
+    instruction: response.response.strInstructions
+  };
 
-      setDrink(drinkInfo);
-      setIngredientsAndMeasures(ingredientsAndMeasuresInfo);        
-      
-    })   
-    .catch(error => console.log(error))    
-  };  
-    
+  const ingredientsAndMeasuresInfo = [`${response.response.strMeasure1} - ${response.response.strIngredient1}` , `${response.response.strMeasure2} - ${response.response.strIngredient2}`, `${response.response.strMeasure3} - ${response.response.strIngredient3}`, `${response.response.strMeasure4} - ${response.response.strIngredient4}`, `${response.response.strMeasure5} - ${response.response.strIngredient5}`, `${response.response.strMeasure6} - ${response.response.strIngredient6}`, `${response.response.strMeasure7} - ${response.response.strIngredient7}`, `${response.response.strMeasure8} - ${response.response.strIngredient8}`, `${response.response.strMeasure9} - ${response.response.strIngredient9}`, `${response.response.strMeasure10} - ${response.response.strIngredient10}`, `${response.response.strMeasure11} - ${response.response.strIngredient11}`, `${response.response.strMeasure12} - ${response.response.strIngredient12}`, `${response.response.strMeasure13} - ${response.response.strIngredient13}`, `${response.response.strMeasure14} - ${response.response.strIngredient14}`, `${response.response.strMeasure15} - ${response.response.strIngredient15 }` ];      
+     
   useEffect(() =>{
-    fetchDrink(urlDrink);    
+    setDrink(drinkInfo);
+    setIngredientsAndMeasures(ingredientsAndMeasuresInfo);     
   }, []) 
 
   return (       
