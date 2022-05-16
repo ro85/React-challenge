@@ -8,14 +8,14 @@ import {
 import './App.css';
 import DrinkList from './components/DrinkList';
 import DrinkPage from './pages/DrinkPage';
+import useFetch from './useFetch';
   
 
 const App = () => {
-
-  const [drinks, setDrinks] = useState([]);
+  const [drinks, setDrinks] = useState([]); 
 
   const url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
-  
+
   const fetchDrinks = (url) => {
     fetch(url)
     .then(response => response.json())    

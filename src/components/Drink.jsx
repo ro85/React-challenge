@@ -26,7 +26,7 @@ const Drink = ({ drinkId }) => {
     
   useEffect(() =>{
     fetchDrink(urlDrink);    
-  }, []) 
+  }, [urlDrink]) 
   
   return (
     <div className='flex-grow-1 drink-info'>
@@ -35,8 +35,7 @@ const Drink = ({ drinkId }) => {
         <li>{ingredients[0]}</li>
         <li>{ingredients[1]}</li>
       </ul> 
-      {(ingredients.filter(Boolean).length - 2 >= 1) ? <p>y {ingredients.filter(Boolean).length - 2} ingredients mas</p> : null }    
-      
+      {(ingredients.filter(Boolean).length - 2 >= 1) ? <p>y {ingredients.filter(Boolean).length - 2} ingredients mas</p> : null }        
     </div>
   )
 }
