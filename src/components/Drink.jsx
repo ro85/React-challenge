@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import '../App.css';
-import useFetch from '../useFetch';
 
 const Drink = ({ drinkId }) => {
   const [drink, setDrink] = useState({});
   const [ingredients, setIngredients] = useState([]);
 
-  const response  = useFetch(axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`));
+  const urlDrink = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`
 
-  console.log(response);
+  const fetchDrink = (urlDrink) => {
+    fetch(urlDrink)
+    .then(response => response.json())    
+    .then((data) => {
+        
+      const drinkInfo  = {
+        name: data.drinks[0].strDrink
+      };
 
-  //console.log(axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`));
-            
+      const ingredientsInfo = [data.drinks[0].strIngredient1, data.drinks[0].strIngredient2, data.drinks[0].strIngredient3, data.drinks[0].strIngredient4, data.drinks[0].strIngredient5, data.drinks[0].strIngredient6, data.drinks[0].strIngredient7, data.drinks[0].strIngredient8, data.drinks[0].strIngredient9, data.drinks[0].strIngredient10, data.drinks[0].strIngredient11, data.drinks[0].strIngredient12, data.drinks[0].strIngredient13, data.drinks[0].strIngredient14, data.drinks[0].strIngredient15 ];  
 
-  const drinkInfo  = {      
-    name: response.response.strDrink
-  };    
-
-  const ingredientsInfo = [response.response.strIngredient1, response.response.strIngredient2, response.response.strIngredient3, response.response.strIngredient4, response.response.strIngredient5, response.response.strIngredient6, response.response.strIngredient7, response.response.strIngredient8, response.response.strIngredient9, response.response.strIngredient10, response.response.strIngredient11, response.response.strIngredient12, response.response.strIngredient13, response.response.strIngredient14, response.response.strIngredient15 ];  
-
-  useEffect(() => {
-    setDrink(drinkInfo);
-    setIngredients(ingredientsInfo);  
-    console.log(drinkInfo); 
-  }, [])
-
+      setDrink(drinkInfo);
+      setIngredients(ingredientsInfo);        
+    })   
+    .catch(error => console.log(error))    
+  };  
+    
+  useEffect(() =>{
+    fetchDrink(urlDrink);    
+  }, [urlDrink]) 
+  
   return (
     <div className='flex-grow-1 drink-info'>
       <h2 className='text-left'>{drink.name}</h2>
@@ -33,8 +35,7 @@ const Drink = ({ drinkId }) => {
         <li>{ingredients[0]}</li>
         <li>{ingredients[1]}</li>
       </ul> 
-      {(ingredients.filter(Boolean).length - 2 >= 1) ? <p>y {ingredients.filter(Boolean).length - 2} ingredients mas</p> : null }    
-      
+      {(ingredients.filter(Boolean).length - 2 >= 1) ? <p>y {ingredients.filter(Boolean).length - 2} ingredients mas</p> : null }        
     </div>
   )
 }
